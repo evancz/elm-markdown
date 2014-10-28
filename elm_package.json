@@ -1,0 +1,15 @@
+{
+    "version": "1.0.0",
+    "summary": "Fast markdown parsing and rendering",
+    "repository": "https://github.com/evancz/elm-markdown.git",
+    "license": "BSD3",
+    "source-directories": [
+        "src"
+    ],
+    "exposed-modules": [
+        "Markdown"
+    ],
+    "dependencies": {
+        "evancz/elm-html": "1.0.0"
+    }
+}
