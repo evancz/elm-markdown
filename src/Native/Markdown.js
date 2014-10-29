@@ -32,19 +32,21 @@ Elm.Native.Markdown.make = function(localRuntime) {
     });
 
     function toHtml(rawMarkdown) {
-        var div = document.createElement('div');
+        var sharedState = { div: null };
         var widget = {
             type: "Widget",
 
             init: function () {
                 var html = marked(rawMarkdown);
+                var div = document.createElement('div');
                 div.innerHTML = html;
+                sharedState.div = div;
                 return div;
             },
 
             update: function () {
                 var html = marked(rawMarkdown);
-                div.innerHTML = html;
+                sharedState.div.innerHTML = html;
             }
         };
         return widget;
