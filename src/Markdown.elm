@@ -5,8 +5,14 @@ module Markdown where
 
 import Html (Html)
 import Native.Markdown
+import Text
 
 
 toHtml : String -> Html
-toHtml rawMarkdown =
-    Native.Markdown.toHtml rawMarkdown
+toHtml =
+    Native.Markdown.toHtml
+
+
+toElement : String -> Element
+toElement =
+    Native.Markdown.toElement

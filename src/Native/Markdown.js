@@ -12,6 +12,7 @@ Elm.Native.Markdown.make = function(localRuntime) {
         return Elm.Native.Markdown.values;
     }
 
+    var Text = Elm.Text.make(localRuntime);
 
     /**
      * marked - a markdown parser
@@ -49,7 +50,12 @@ Elm.Native.Markdown.make = function(localRuntime) {
         return widget;
     }
 
+    function toElement(rawMarkdown) {
+        return Text.markdown(marked(rawMarkdown));
+    }
+
     return Elm.Native.Markdown.values = {
-        toHtml: toHtml
+        toHtml: toHtml,
+        toElement: toElement
     };
 };
