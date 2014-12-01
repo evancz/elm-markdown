@@ -28,11 +28,21 @@ Elm.Native.Markdown.make = function(localRuntime) {
         pedantic: false,
         sanitize: true,
         smartLists: true,
-        smartypants: false
+        smartypants: false,
+        highlight: function (code, lang) {
+            if (!hljs) {
+                return code;
+            }
+            else if (lang) {
+                return hljs.highlight(lang, code, true).value;
+            }
+            else {
+                return hljs.highlightAuto(code).value;
+            }
+        }
     });
 
     function toHtml(rawMarkdown) {
-        var sharedState = { div: null };
         var widget = {
             type: "Widget",
 
@@ -40,13 +50,13 @@ Elm.Native.Markdown.make = function(localRuntime) {
                 var html = marked(rawMarkdown);
                 var div = document.createElement('div');
                 div.innerHTML = html;
-                sharedState.div = div;
                 return div;
             },
 
-            update: function () {
+            update: function (previous, node) {
                 var html = marked(rawMarkdown);
-                sharedState.div.innerHTML = html;
+                node.innerHTML = html;
+                return node;
             }
         };
         return widget;
