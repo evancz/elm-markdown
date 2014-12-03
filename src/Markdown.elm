@@ -51,20 +51,20 @@ toElement string =
 
 {-| Some parser options so you can tweak things for your particular case.
 
-    * `githubFlavored` &mdash; overall reasonable improvements on the original
-      markdown parser as described [here][gfm]. This includes stuff like [fenced
-      code blocks][fenced]. There are some odd parts though, such as [tables][]
-      and a setting to turn all newlines into newlines in the resulting output,
-      so there are settings to turn those on or off based on your preference.
+  * `githubFlavored` &mdash; overall reasonable improvements on the original
+    markdown parser as described [here][gfm]. This includes stuff like [fenced
+    code blocks][fenced]. There are some odd parts though, such as [tables][]
+    and a setting to turn all newlines into newlines in the resulting output,
+    so there are settings to turn those on or off based on your preference.
 
-    * `sanitize` &mdash; this determines if all HTML should be escaped. If you
-      are parsing user markdown or user input can somehow reach the markdown
-      parser, you should almost certainly turn on sanitation. If it is just you
-      writing markdown, turning sanitation off is a nice way to do some HTML
-      tricks if it is needed.
+  * `sanitize` &mdash; this determines if all HTML should be escaped. If you
+    are parsing user markdown or user input can somehow reach the markdown
+    parser, you should almost certainly turn on sanitation. If it is just you
+    writing markdown, turning sanitation off is a nice way to do some HTML
+    tricks if it is needed.
 
-    * `smartypants` &mdash; This will automatically upgrade quotes to the
-      prettier versions and turn dashes into [em dashes or en dashes][dash]
+  * `smartypants` &mdash; This will automatically upgrade quotes to the
+    prettier versions and turn dashes into [em dashes or en dashes][dash]
 
 
 [gfm]: https://help.github.com/articles/github-flavored-markdown/
