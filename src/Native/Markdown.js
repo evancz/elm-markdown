@@ -30,7 +30,7 @@ Elm.Native.Markdown.make = function(localRuntime) {
         smartLists: true,
         smartypants: false,
         highlight: function (code, lang) {
-            if (!hljs) {
+            if (typeof hljs === 'undefined') {
                 return code;
             }
             else if (lang) {
