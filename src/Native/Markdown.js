@@ -23,15 +23,12 @@ Elm.Native.Markdown.make = function(localRuntime) {
 
     marked.setOptions({
         highlight: function (code, lang) {
-            if (typeof hljs === 'undefined') {
-                return code;
-            }
-            else if (lang) {
+            if (typeof hljs !== 'undefined'
+                && lang
+                && hljs.listLanguages().indexOf(lang) >= 0) {
                 return hljs.highlight(lang, code, true).value;
             }
-            else {
-                return hljs.highlightAuto(code).value;
-            }
+            return code;
         }
     });
 
