@@ -12,7 +12,7 @@ Elm.Native.Markdown.make = function(localRuntime) {
         return Elm.Native.Markdown.values;
     }
 
-    var Text = Elm.Text.make(localRuntime);
+    var Text = Elm.Native.Text.make(localRuntime);
 
     /**
      * marked - a markdown parser
