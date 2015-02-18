@@ -8,7 +8,8 @@ Elm.Native.Markdown.make = function(localRuntime) {
     'use strict';
 
     // attempt to short-circuit
-    if ('values' in Elm.Native.Markdown) {
+    if ('values' in Elm.Native.Markdown)
+    {
         return Elm.Native.Markdown.values;
     }
 
@@ -25,7 +26,8 @@ Elm.Native.Markdown.make = function(localRuntime) {
         highlight: function (code, lang) {
             if (typeof hljs !== 'undefined'
                 && lang
-                && hljs.listLanguages().indexOf(lang) >= 0) {
+                && hljs.listLanguages().indexOf(lang) >= 0)
+            {
                 return hljs.highlight(lang, code, true).value;
             }
             return code;
@@ -34,23 +36,25 @@ Elm.Native.Markdown.make = function(localRuntime) {
 
     function formatOptions(options) {
         var gfm = options.githubFlavored;
-        if (gfm.ctor === 'Just') {
+        if (gfm.ctor === 'Just')
+        {
             return {
                 gfm: true,
                 tables: gfm.tables,
                 breaks: gfm.breaks,
                 sanitize: options.sanitize,
                 smartypants: options.smartypants
-            }
+            };
         }
-        else {
+        else
+        {
             return {
                 gfm: false,
                 tables: false,
                 breaks: false,
                 sanitize: options.sanitize,
                 smartypants: options.smartypants
-            }
+            };
         }
     }
 
