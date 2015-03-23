@@ -9,10 +9,9 @@ module Markdown where
 @docs Options, defaultOptions, toElementWith, toHtmlWith
 -}
 
-import Graphics.Element (Element)
-import Html (Html)
+import Graphics.Element exposing (Element)
+import Html exposing (Html)
 import Native.Markdown
-import Text
 
 
 {-| Turn a markdown string into an HTML element, using the `defaultOptions`.
@@ -20,7 +19,7 @@ import Text
     bodyParagraph : Html
     bodyParagraph =
         Markdown.toHtml """
-    
+
     # Changing History
 
     In addition to time travel, Elm Reactor lets you change history...
@@ -34,10 +33,10 @@ toHtml string =
 
 {-| Turn a markdown string into an HTML element, using the `defaultOptions`.
 
-    intro : Element    
+    intro : Element
     intro =
         Markdown.toElement """
-    
+
     # Time Travel Made Easy
 
     Elm Reactor grew out of my internship working on Elm at Prezi this summer...
