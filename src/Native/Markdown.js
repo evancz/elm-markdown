@@ -58,24 +58,28 @@ Elm.Native.Markdown.make = function(localRuntime) {
         }
     }
 
+    function MarkdownWidget(options, rawMarkdown) {
+        this._options = options;
+        this._rawMarkdown = rawMarkdown;
+    }
+
+    MarkdownWidget.prototype.type = "Widget";
+
+    MarkdownWidget.prototype.init = function init() {
+        var html = marked(this._rawMarkdown, formatOptions(this._options));
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        return div;
+    };
+
+    MarkdownWidget.prototype.update = function update(previous, node) {
+        var html = marked(this._rawMarkdown, formatOptions(this._options));
+        node.innerHTML = html;
+        return node;
+    };
+
     function toHtmlWith(options, rawMarkdown) {
-        var widget = {
-            type: "Widget",
-
-            init: function () {
-                var html = marked(rawMarkdown, formatOptions(options));
-                var div = document.createElement('div');
-                div.innerHTML = html;
-                return div;
-            },
-
-            update: function (previous, node) {
-                var html = marked(rawMarkdown, formatOptions(options));
-                node.innerHTML = html;
-                return node;
-            }
-        };
-        return widget;
+        return new MarkdownWidget(options, rawMarkdown);
     }
 
     function toElementWith(options, rawMarkdown) {
