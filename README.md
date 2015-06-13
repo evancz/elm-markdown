@@ -7,7 +7,7 @@ which focuses on speed.
 
 ## Basic Usage
 
-```haskell
+```elm
 content : Element
 content = Markdown.toElement """
 
