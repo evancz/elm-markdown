@@ -56,6 +56,11 @@ toElement string =
     and a setting to turn all newlines into newlines in the resulting output,
     so there are settings to turn those on or off based on your preference.
 
+  * `defaultLanguage` &mdash; whether to use a default language, and which one,
+    for highlighting any code blocks that come without a language tag. Note the
+    reliance on the [highlight.js](https://highlightjs.org/) project as explained
+    [here](#code-blocks).
+
   * `sanitize` &mdash; this determines if all HTML should be escaped. If you
     are parsing user markdown or user input can somehow reach the markdown
     parser, you should almost certainly turn on sanitation. If it is just you
@@ -73,6 +78,7 @@ toElement string =
 -}
 type alias Options =
     { githubFlavored : Maybe { tables : Bool, breaks : Bool }
+    , defaultLanguage : Maybe String
     , sanitize : Bool
     , smartypants : Bool
     }
@@ -81,6 +87,7 @@ type alias Options =
 {-| The `Options` used by the `toElement` and `toHtml` functions.
 
     { githubFlavored = Just { tables = False, breaks = False }
+    , defaultLanguage = Nothing
     , sanitize = False
     , smartypants = False
     }
@@ -88,6 +95,7 @@ type alias Options =
 defaultOptions : Options
 defaultOptions =
     { githubFlavored = Just { tables = False, breaks = False }
+    , defaultLanguage = Nothing
     , sanitize = False
     , smartypants = False
     }
