@@ -24,9 +24,9 @@ Elm.Native.Markdown.make = function(localRuntime) {
 
 	function formatOptions(options) {
 		var toHighlight = function (code, lang) {
-			if (!lang && options.defaultLanguage.ctor === 'Just')
+			if (!lang && options.defaultHighlighting.ctor === 'Just')
 			{
-				lang = options.defaultLanguage._0;
+				lang = options.defaultHighlighting._0;
 			}
 			if (typeof hljs !== 'undefined'
 				&& lang

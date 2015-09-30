@@ -56,7 +56,7 @@ toElement string =
     and a setting to turn all newlines into newlines in the resulting output,
     so there are settings to turn those on or off based on your preference.
 
-  * `defaultLanguage` &mdash; a default language to use for code blocks that do
+  * `defaultHighlighting` &mdash; a default language to use for code blocks that do
     not have a language tag. So setting this to `Just "elm"` will treat all
     unlabeled code blocks as Elm code. (This relies on [highlight.js][highlight]
     as explained in the README [here](../#code-blocks).)
@@ -79,7 +79,7 @@ toElement string =
 -}
 type alias Options =
     { githubFlavored : Maybe { tables : Bool, breaks : Bool }
-    , defaultLanguage : Maybe String
+    , defaultHighlighting : Maybe String
     , sanitize : Bool
     , smartypants : Bool
     }
@@ -88,7 +88,7 @@ type alias Options =
 {-| The `Options` used by the `toElement` and `toHtml` functions.
 
     { githubFlavored = Just { tables = False, breaks = False }
-    , defaultLanguage = Nothing
+    , defaultHighlighting = Nothing
     , sanitize = False
     , smartypants = False
     }
@@ -96,7 +96,7 @@ type alias Options =
 defaultOptions : Options
 defaultOptions =
     { githubFlavored = Just { tables = False, breaks = False }
-    , defaultLanguage = Nothing
+    , defaultHighlighting = Nothing
     , sanitize = False
     , smartypants = False
     }
