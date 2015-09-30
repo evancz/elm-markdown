@@ -56,10 +56,10 @@ toElement string =
     and a setting to turn all newlines into newlines in the resulting output,
     so there are settings to turn those on or off based on your preference.
 
-  * `defaultLanguage` &mdash; whether to use a default language, and which one,
-    for highlighting any code blocks that come without a language tag. Note the
-    reliance on the [highlight.js](https://highlightjs.org/) project as explained
-    [here](#code-blocks).
+  * `defaultLanguage` &mdash; a default language to use for code blocks that do
+    not have a language tag. So setting this to `Just "elm"` will treat all
+    unlabeled code blocks as Elm code. (This relies on [highlight.js][highlight]
+    as explained in the README.)
 
   * `sanitize` &mdash; this determines if all HTML should be escaped. If you
     are parsing user markdown or user input can somehow reach the markdown
@@ -74,6 +74,7 @@ toElement string =
 [gfm]: https://help.github.com/articles/github-flavored-markdown/
 [fenced]: https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks
 [tables]: https://help.github.com/articles/github-flavored-markdown/#tables
+[highlight]: https://highlightjs.org/
 [dash]: http://en.wikipedia.org/wiki/Dash
 -}
 type alias Options =
