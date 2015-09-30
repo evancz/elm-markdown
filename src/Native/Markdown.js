@@ -40,8 +40,8 @@ Elm.Native.Markdown.make = function(localRuntime) {
 		{
 			return {
 				gfm: true,
-				tables: gfm.tables,
-				breaks: gfm.breaks,
+				tables: gfm._0.tables,
+				breaks: gfm._0.breaks,
 				sanitize: options.sanitize,
 				smartypants: options.smartypants
 			};
