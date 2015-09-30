@@ -59,7 +59,7 @@ toElement string =
   * `defaultLanguage` &mdash; a default language to use for code blocks that do
     not have a language tag. So setting this to `Just "elm"` will treat all
     unlabeled code blocks as Elm code. (This relies on [highlight.js][highlight]
-    as explained in the README.)
+    as explained in the README [here](../#code-blocks).)
 
   * `sanitize` &mdash; this determines if all HTML should be escaped. If you
     are parsing user markdown or user input can somehow reach the markdown
