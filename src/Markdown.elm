@@ -56,6 +56,11 @@ toElement string =
     and a setting to turn all newlines into newlines in the resulting output,
     so there are settings to turn those on or off based on your preference.
 
+  * `defaultLanguage` &mdash; a default language to use for code blocks that do
+    not have a language tag. So setting this to `Just "elm"` will treat all
+    unlabeled code blocks as Elm code. (This relies on [highlight.js][highlight]
+    as explained in the README.)
+
   * `sanitize` &mdash; this determines if all HTML should be escaped. If you
     are parsing user markdown or user input can somehow reach the markdown
     parser, you should almost certainly turn on sanitation. If it is just you
@@ -69,10 +74,12 @@ toElement string =
 [gfm]: https://help.github.com/articles/github-flavored-markdown/
 [fenced]: https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks
 [tables]: https://help.github.com/articles/github-flavored-markdown/#tables
+[highlight]: https://highlightjs.org/
 [dash]: http://en.wikipedia.org/wiki/Dash
 -}
 type alias Options =
     { githubFlavored : Maybe { tables : Bool, breaks : Bool }
+    , defaultLanguage : Maybe String
     , sanitize : Bool
     , smartypants : Bool
     }
@@ -81,6 +88,7 @@ type alias Options =
 {-| The `Options` used by the `toElement` and `toHtml` functions.
 
     { githubFlavored = Just { tables = False, breaks = False }
+    , defaultLanguage = Nothing
     , sanitize = False
     , smartypants = False
     }
@@ -88,6 +96,7 @@ type alias Options =
 defaultOptions : Options
 defaultOptions =
     { githubFlavored = Just { tables = False, breaks = False }
+    , defaultLanguage = Nothing
     , sanitize = False
     , smartypants = False
     }
