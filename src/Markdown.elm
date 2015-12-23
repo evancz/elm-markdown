@@ -107,7 +107,7 @@ defaultOptions =
 
     options : Options
     options =
-        { defaultOptions | sanitize <- True }
+        { defaultOptions | sanitize = True }
 
     toMarkdown : String -> Html
     toMarkdown userInput =
@@ -123,7 +123,7 @@ modified parsing options.
 
     options : Options
     options =
-        { defaultOptions | smartypants <- True }
+        { defaultOptions | smartypants = True }
 
     toSmartElement : String -> Element
     toSmartElement markdown =
