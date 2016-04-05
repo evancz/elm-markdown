@@ -3,14 +3,13 @@ var _evancz$elm_markdown$Native_Markdown = function() {
 
 // VIRTUAL-DOM WIDGETS
 
-function toHtml(options, facts, rawMarkdown)
+function toHtml(options, factList, rawMarkdown)
 {
-	return {
-		type: 'custom',
-		facts: facts,
-		model: { options: options, markdown: rawMarkdown },
-		impl: implementation
+	var model = {
+		options: options,
+		markdown: rawMarkdown
 	};
+	return _elm_lang$virtual_dom$Native_VirtualDom.custom(factList, model, implementation);
 }
 
 
