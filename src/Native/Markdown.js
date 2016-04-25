@@ -50,6 +50,7 @@ Elm.Native.Markdown.make = function(localRuntime) {
 		if (gfm.ctor === 'Just')
 		{
 			return {
+				langPrefix: 'hljs ', // See https://github.com/chjj/marked/pull/418#issuecomment-65939773.
 				highlight: toHighlight,
 				gfm: true,
 				tables: gfm._0.tables,
@@ -61,6 +62,7 @@ Elm.Native.Markdown.make = function(localRuntime) {
 		else
 		{
 			return {
+				langPrefix: 'hljs ', // See https://github.com/chjj/marked/pull/418#issuecomment-65939773.
 				highlight: toHighlight,
 				gfm: false,
 				tables: false,
