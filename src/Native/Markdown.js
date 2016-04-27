@@ -30,14 +30,15 @@ function render(model)
 
 function diff(a, b)
 {
-	if (a.markdown === b.markdown && a.options === b.options)
+	
+	if (a.model.markdown === b.model.markdown && a.model.options === b.model.options)
 	{
 		return null;
 	}
 
 	return {
 		applyPatch: applyPatch,
-		data: marked(b.markdown, formatOptions(b.options))
+		data: marked(b.model.markdown, formatOptions(b.model.options))
 	};
 }
 
