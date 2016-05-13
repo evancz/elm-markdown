@@ -1,24 +1,27 @@
-module Markdown where
+module Markdown exposing
+  ( toHtml
+  , Options, defaultOptions, toHtmlWith
+  )
+
 {-| A library for markdown parsing. This is just an Elm API built on top of the
 [marked](https://github.com/chjj/marked) project which focuses on speed.
 
 # Parsing Markdown
-@docs toElement, toHtml
+@docs toHtml
 
 # Parsing with Custom Options
-@docs Options, defaultOptions, toElementWith, toHtmlWith
+@docs Options, defaultOptions, toHtmlWith
 -}
 
-import Graphics.Element exposing (Element)
-import Html exposing (Html)
+import Html exposing (Html, Attribute)
 import Native.Markdown
 
 
 {-| Turn a markdown string into an HTML element, using the `defaultOptions`.
 
-    bodyParagraph : Html
+    bodyParagraph : Html msg
     bodyParagraph =
-        Markdown.toHtml """
+       Markdown.toHtml [class "body"] """
 
     # Changing History
 
@@ -26,26 +29,9 @@ import Native.Markdown
 
     """
 -}
-toHtml : String -> Html
-toHtml string =
-    Native.Markdown.toHtmlWith defaultOptions string
-
-
-{-| Turn a markdown string into an HTML element, using the `defaultOptions`.
-
-    intro : Element
-    intro =
-        Markdown.toElement """
-
-    # Time Travel Made Easy
-
-    Elm Reactor grew out of my internship working on Elm at Prezi this summer...
-
-    """
--}
-toElement : String -> Element
-toElement string =
-    Native.Markdown.toElementWith defaultOptions string
+toHtml : List (Attribute msg) -> String -> Html msg
+toHtml attrs string =
+  Native.Markdown.toHtml defaultOptions attrs string
 
 
 {-| Some parser options so you can tweak things for your particular case.
@@ -78,11 +64,11 @@ toElement string =
 [dash]: http://en.wikipedia.org/wiki/Dash
 -}
 type alias Options =
-    { githubFlavored : Maybe { tables : Bool, breaks : Bool }
-    , defaultHighlighting : Maybe String
-    , sanitize : Bool
-    , smartypants : Bool
-    }
+  { githubFlavored : Maybe { tables : Bool, breaks : Bool }
+  , defaultHighlighting : Maybe String
+  , sanitize : Bool
+  , smartypants : Bool
+  }
 
 
 {-| The `Options` used by the `toElement` and `toHtml` functions.
@@ -95,11 +81,11 @@ type alias Options =
 -}
 defaultOptions : Options
 defaultOptions =
-    { githubFlavored = Just { tables = False, breaks = False }
-    , defaultHighlighting = Nothing
-    , sanitize = False
-    , smartypants = False
-    }
+  { githubFlavored = Just { tables = False, breaks = False }
+  , defaultHighlighting = Nothing
+  , sanitize = False
+  , smartypants = False
+  }
 
 
 {-| Maybe you want to parse user input into markdown. To stop them from adding
@@ -111,25 +97,8 @@ defaultOptions =
 
     toMarkdown : String -> Html
     toMarkdown userInput =
-        Markdown.toHtmlWith options userInput
+        Markdown.toHtmlWith options [] userInput
 -}
-toHtmlWith : Options -> String -> Html
+toHtmlWith : Options -> List (Attribute msg) -> String -> Html msg
 toHtmlWith =
-    Native.Markdown.toHtmlWith
-
-
-{-| Maybe you want to get prettier quotes with a simple syntax. You can use
-modified parsing options.
-
-    options : Options
-    options =
-        { defaultOptions | smartypants = True }
-
-    toSmartElement : String -> Element
-    toSmartElement markdown =
-        Markdown.toElementWith options markdown
--}
-toElementWith : Options -> String -> Element
-toElementWith =
-    Native.Markdown.toElementWith
-
+  Native.Markdown.toHtml
