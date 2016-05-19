@@ -1,5 +1,5 @@
 {
-    "version": "3.0.0",
+    "version": "4.0.0",
     "summary": "Fast markdown parsing and rendering",
     "repository": "https://github.com/evancz/elm-markdown.git",
     "license": "BSD3",
