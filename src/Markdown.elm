@@ -25,10 +25,7 @@ import Native.Markdown
 
     # Apple Pie Recipe
 
-    Here are the two steps:
-
-      1. Invent the universe.
-      2. Bake an apple pie.
+    First, invent the universe. Then bake an apple pie.
 
     """
 -}
