@@ -8,8 +8,9 @@ which focuses on speed.
 ## Basic Usage
 
 ```elm
-content : Element
-content = Markdown.toElement """
+content : Html msg
+content =
+   Markdown.toHtml [class "content"] """
 
 # Apple Pie Recipe
 
@@ -19,10 +20,11 @@ content = Markdown.toElement """
 """
 ```
 
-**Warning:** Calling the `Markdown.toElement` function actually parses the
-whole block, so try not to call it for no reason. In the `content` example
-above we only have to parse the text once, but if we put it in a function we
-may be doing a lot of unnecessary parsing.
+**Warning:** Calling `Markdown.toHtml` parses the whole block, so try not to
+call it for no reason. In the `content` example above we only have to parse
+the text once, but if we put it in a function we may be doing a lot of
+unnecessary parsing.
+
 
 ## Code Blocks
 
