@@ -19,13 +19,16 @@ import Native.Markdown
 
 {-| Turn a markdown string into an HTML element, using the `defaultOptions`.
 
-    bodyParagraph : Html msg
-    bodyParagraph =
-       Markdown.toHtml [class "body"] """
+    recipe : Html msg
+    recipe =
+       Markdown.toHtml [class "recipe"] """
 
-    # Changing History
+    # Apple Pie Recipe
 
-    In addition to time travel, Elm Reactor lets you change history...
+    Here are the two steps:
+
+      1. Invent the universe.
+      2. Bake an apple pie.
 
     """
 -}
